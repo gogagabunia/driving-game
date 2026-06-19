@@ -1,0 +1,82 @@
+/* ExamPlaceholder.css */
+.exam-placeholder {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 2rem;
+}
+
+.ep-bg {
+  position: fixed;
+  inset: 0;
+  background: var(--grad-hero);
+  z-index: 0;
+}
+
+.ep-content {
+  position: relative;
+  z-index: 1;
+  max-width: 600px;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.ep-icon { font-size: 4rem; animation: float 4s ease-in-out infinite; }
+
+.ep-title {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #F0F4FF;
+}
+
+.ep-city-badge { font-size: 0.95rem; padding: 0.4rem 1rem; }
+
+.ep-info-card {
+  background: var(--grad-card);
+  border: 1px solid var(--color-border-light);
+  border-radius: 20px;
+  padding: 1.75rem;
+  text-align: left;
+  backdrop-filter: blur(16px);
+  width: 100%;
+}
+
+.ep-info-card h2 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  color: #F0F4FF;
+}
+
+.ep-info-card p {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.ep-info-card ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.ep-info-card li {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+}
+
+.ep-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}

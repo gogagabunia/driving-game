@@ -1,0 +1,264 @@
+/* MainMenu.css */
+
+.main-menu {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.menu-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Header */
+.menu-header {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 2rem;
+  background: rgba(5, 13, 26, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(100,150,220,0.12);
+}
+
+.menu-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.menu-flag {
+  font-size: 2.2rem;
+  filter: drop-shadow(0 0 8px rgba(230,51,41,0.5));
+  animation: float 4s ease-in-out infinite;
+}
+
+.menu-title-text {
+  font-size: clamp(0.85rem, 2vw, 1.1rem);
+  font-weight: 800;
+  color: #F0F4FF;
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+}
+
+.menu-subtitle-text {
+  font-size: 0.75rem;
+  color: #8BA4C4;
+  font-weight: 400;
+}
+
+.menu-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.lang-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 600;
+  font-size: 0.8rem;
+}
+
+/* Main content */
+.menu-main {
+  position: relative;
+  z-index: 10;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  gap: 2rem;
+}
+
+/* Flag stripe */
+.flag-stripe {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  opacity: 0.6;
+}
+
+.stripe-red {
+  width: 48px;
+  height: 4px;
+  background: #E63329;
+  border-radius: 2px;
+}
+
+.stripe-white {
+  width: 24px;
+  height: 4px;
+  background: rgba(255,255,255,0.8);
+  border-radius: 2px;
+}
+
+/* Choose title */
+.menu-choose-title {
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  font-weight: 900;
+  text-align: center;
+  background: linear-gradient(135deg, #F0F4FF 0%, #8BA4C4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.02em;
+}
+
+/* Exam Cards */
+.menu-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 900px;
+}
+
+.exam-card {
+  position: relative;
+  background: linear-gradient(160deg, rgba(20,45,90,0.85) 0%, rgba(10,22,48,0.92) 100%);
+  border: 1px solid rgba(100,150,220,0.15);
+  border-radius: 20px;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+  cursor: pointer;
+  text-align: left;
+  overflow: hidden;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.exam-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--card-color);
+  border-radius: 20px 20px 0 0;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.exam-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--card-color);
+  box-shadow: 0 20px 50px var(--card-glow), 0 0 0 1px var(--card-color);
+}
+
+.exam-card:hover::before {
+  opacity: 1;
+}
+
+.exam-card:hover .exam-card-glow {
+  opacity: 1;
+}
+
+.exam-card-glow {
+  position: absolute;
+  bottom: -40px;
+  left: -40px;
+  right: -40px;
+  height: 120px;
+  background: radial-gradient(ellipse, var(--card-glow) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.exam-card-icon {
+  font-size: 2.5rem;
+  line-height: 1;
+  filter: drop-shadow(0 0 10px var(--card-glow));
+  transition: transform 0.3s ease;
+}
+
+.exam-card:hover .exam-card-icon {
+  transform: scale(1.1) translateY(-2px);
+}
+
+.exam-card-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #F0F4FF;
+  line-height: 1.2;
+}
+
+.exam-card-desc {
+  font-size: 0.82rem;
+  color: #8BA4C4;
+  line-height: 1.5;
+  flex: 1;
+}
+
+.exam-card-arrow {
+  font-size: 1.2rem;
+  color: var(--card-color);
+  transition: transform 0.3s ease;
+}
+
+.exam-card:hover .exam-card-arrow {
+  transform: translateX(4px);
+}
+
+/* Secondary nav */
+.menu-secondary-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Footer */
+.menu-footer {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  padding: 1rem 2rem;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .menu-cards {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+  }
+
+  .exam-card {
+    flex-direction: row;
+    align-items: center;
+    padding: 1.25rem 1.5rem;
+  }
+
+  .exam-card-icon { font-size: 2rem; }
+  .exam-card-title { font-size: 1rem; }
+
+  .menu-header {
+    padding: 1rem;
+    flex-direction: column;
+    gap: 0.75rem;
+    text-align: center;
+  }
+}
+
+@media (max-width: 640px) {
+  .menu-main { padding: 1rem; gap: 1.5rem; }
+  .menu-title-text { font-size: 0.8rem; }
+}

@@ -1,0 +1,363 @@
+/* CityExam.css */
+
+.city-page {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  background: #01060d;
+  font-family: 'Inter', sans-serif;
+  color: #F0F4FF;
+}
+
+.driving-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  outline: none;
+}
+
+/* --- HUD Container --- */
+.hud-container {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.5rem;
+  box-sizing: border-box;
+}
+
+.hud-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.hud-city-card {
+  background: rgba(10, 25, 50, 0.65);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(100, 150, 255, 0.25);
+  border-radius: 12px;
+  padding: 0.75rem 1.25rem;
+  pointer-events: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.hud-city-title {
+  font-size: 1.15rem;
+  font-weight: 900;
+  color: #E63329;
+  margin: 0;
+  text-shadow: 0 0 10px rgba(230, 51, 41, 0.3);
+}
+
+.hud-city-backdrop {
+  font-size: 0.75rem;
+  color: #8BA4C4;
+}
+
+/* Stats (Score + Time) */
+.hud-stats-panel {
+  display: flex;
+  gap: 1rem;
+  pointer-events: auto;
+}
+
+.stat-box {
+  background: rgba(10, 25, 50, 0.65);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(100, 150, 255, 0.25);
+  border-radius: 12px;
+  padding: 0.75rem 1.25rem;
+  min-width: 100px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stat-box.penalty-flash {
+  animation: penalty-flash-anim 0.5s ease-in-out 2;
+  border-color: #E63329;
+}
+
+@keyframes penalty-flash-anim {
+  0%, 100% { background: rgba(10, 25, 50, 0.65); }
+  50% { background: rgba(230, 51, 41, 0.45); }
+}
+
+.stat-box-val {
+  font-size: 1.5rem;
+  font-weight: 900;
+}
+
+.stat-box-lbl {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #8BA4C4;
+  margin-top: 0.25rem;
+}
+
+/* --- GPS Routing Prompts --- */
+.hud-center {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  max-width: 600px;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.gps-banner {
+  position: relative;
+  background: rgba(5, 12, 24, 0.8);
+  backdrop-filter: blur(20px);
+  border: 1.5px solid rgba(230, 51, 41, 0.4);
+  border-radius: 16px;
+  padding: 1.25rem 2.5rem 1.25rem 2rem;
+  max-width: 600px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+  pointer-events: auto;
+}
+
+.banner-close-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1.15rem;
+  line-height: 1;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(4px);
+  padding: 0;
+  outline: none;
+}
+
+.banner-close-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.4);
+  color: #fff;
+  transform: scale(1.05);
+}
+
+.gps-title {
+  color: #E63329;
+  font-size: 0.75rem;
+  font-weight: 900;
+  margin: 0 0 0.5rem 0;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.gps-desc {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #FFF;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.gps-distance {
+  font-size: 0.8rem;
+  color: #8BA4C4;
+  margin-top: 0.4rem;
+}
+
+/* --- Live Toast Violation Logs --- */
+.violation-toast-container {
+  position: absolute;
+  top: 120px;
+  right: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  z-index: 10;
+}
+
+.violation-toast {
+  background: rgba(230, 51, 41, 0.9);
+  border-left: 5px solid #FFF;
+  border-radius: 6px;
+  padding: 0.75rem 1.25rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #FFF;
+  animation: slide-in-toast 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+@keyframes slide-in-toast {
+  from { transform: translateX(120%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+/* --- Dashboard Footer --- */
+.hud-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 100%;
+}
+
+.dashboard-widget {
+  background: rgba(10, 25, 50, 0.65);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(100, 150, 255, 0.25);
+  border-radius: 16px;
+  padding: 1rem 1.5rem;
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.speedometer-ring {
+  width: 80px;
+  height: 80px;
+  border: 4px solid rgba(255, 255, 255, 0.1);
+  border-top: 4px solid #E63329;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.speed-number {
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: #FFF;
+}
+
+.speed-unit {
+  font-size: 0.6rem;
+  color: #8BA4C4;
+}
+
+/* Speed limits indicator badge */
+.speed-limit-badge {
+  background: #FFF;
+  border: 4px solid #E63329;
+  color: #000;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.25rem;
+  font-weight: 900;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.speed-limit-badge.speeding-warning {
+  animation: speed-flash 0.5s infinite alternate;
+}
+
+@keyframes speed-flash {
+  from { border-color: #E63329; background-color: #FFF; }
+  to { border-color: #FFF; background-color: #E63329; color: #FFF; }
+}
+
+.gear-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.gear-label {
+  font-size: 0.7rem;
+  color: #8BA4C4;
+}
+
+.gear-value {
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: #E63329;
+  text-shadow: 0 0 10px rgba(230, 51, 41, 0.4);
+}
+
+/* --- GPS 2D Vector Mini-Map --- */
+.mini-map-widget {
+  background: rgba(5, 12, 24, 0.8);
+  backdrop-filter: blur(16px);
+  border: 1.5px solid rgba(100, 150, 255, 0.25);
+  border-radius: 16px;
+  padding: 0.5rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  pointer-events: auto;
+  width: 150px;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.mini-map-canvas {
+  width: 150px;
+  height: 150px;
+  display: block;
+}
+
+/* Secondary controls */
+.hud-actions-panel {
+  display: flex;
+  gap: 0.5rem;
+  pointer-events: auto;
+}
+
+/* Mobile buttons styling */
+@keyframes pulse {
+  from { transform: scale(1); opacity: 1; }
+  to { transform: scale(1.05); opacity: 0.85; }
+}
+
+/* Camera HUD Indicator Overlay */
+.camera-hud-overlay {
+  position: absolute;
+  top: 7rem;
+  right: 1.5rem;
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  z-index: 1000;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.camera-hud-overlay.fade-out {
+  opacity: 0;
+  transform: translateY(-5px);
+}

@@ -1,0 +1,237 @@
+/* CitySelect.css */
+
+.city-select-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--grad-hero);
+  position: relative;
+  overflow: hidden;
+}
+
+.city-select-bg {
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 80%, rgba(46,134,222,0.06) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 20%, rgba(230,51,41,0.05) 0%, transparent 50%),
+    var(--grad-hero);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Header */
+.cs-header {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 2rem;
+  background: rgba(5, 13, 26, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(100,150,220,0.12);
+}
+
+.cs-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #F0F4FF;
+}
+
+.cs-mode-badge {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #8BA4C4;
+}
+
+/* Main layout */
+.cs-main {
+  position: relative;
+  z-index: 10;
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 1.5rem;
+  padding: 1.5rem 2rem;
+  max-height: calc(100vh - 70px);
+  overflow: hidden;
+}
+
+/* Map panel */
+.cs-map-panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cs-map-container {
+  position: relative;
+  width: 100%;
+}
+
+.georgia-map-svg {
+  width: 100%;
+  max-height: 65vh;
+  filter: drop-shadow(0 0 30px rgba(46,134,222,0.15));
+}
+
+.pin-ring {
+  animation: pulse 2s ease infinite;
+}
+
+.map-legend {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.legend-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* List panel */
+.cs-list-panel {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.city-list {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding-right: 0.25rem;
+  max-height: 320px;
+}
+
+.city-list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  background: rgba(15, 32, 64, 0.6);
+  border: 1px solid rgba(100,150,220,0.12);
+  border-radius: 10px;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(8px);
+}
+
+.city-list-item:hover {
+  background: rgba(20, 45, 90, 0.8);
+  border-color: var(--city-color);
+  transform: translateX(4px);
+}
+
+.city-list-item.selected {
+  background: rgba(20, 45, 90, 0.9);
+  border-color: var(--city-color);
+  box-shadow: 0 0 0 1px var(--city-color), inset 0 0 20px rgba(0,0,0,0.2);
+}
+
+.city-list-left {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.city-list-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.city-list-name {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #F0F4FF;
+  line-height: 1.2;
+}
+
+.city-list-stars {
+  font-size: 0.7rem;
+  margin-top: 0.15rem;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.city-check {
+  color: var(--city-color);
+  font-weight: 900;
+  font-size: 1.1rem;
+}
+
+/* City detail card */
+.city-detail-card {
+  margin-top: 1rem;
+  background: linear-gradient(160deg, rgba(20,45,90,0.9) 0%, rgba(10,22,48,0.95) 100%);
+  border: 1px solid rgba(100,150,220,0.2);
+  border-radius: 16px;
+  padding: 1.25rem;
+  backdrop-filter: blur(16px);
+}
+
+.city-detail-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.city-detail-name {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #F0F4FF;
+}
+
+.city-detail-desc {
+  margin-bottom: 0.75rem;
+  line-height: 1.5;
+}
+
+.city-detail-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .cs-main {
+    grid-template-columns: 1fr;
+    max-height: none;
+    overflow: visible;
+  }
+
+  .cs-map-panel { order: 2; }
+  .cs-list-panel { order: 1; }
+
+  .city-list { max-height: 200px; }
+
+  .georgia-map-svg { max-height: 40vh; }
+}
+
+@media (max-width: 640px) {
+  .cs-header { padding: 1rem; }
+  .cs-main { padding: 1rem; }
+}

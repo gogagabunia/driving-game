@@ -1,0 +1,199 @@
+{
+  "app": {
+    "title": "Georgian Driving License Simulator",
+    "subtitle": "Practice for Your Official Exam"
+  },
+  "nav": {
+    "login": "Login",
+    "register": "Register",
+    "logout": "Logout",
+    "myProfile": "My Profile",
+    "leaderboard": "Leaderboard",
+    "howToPlay": "How to Play"
+  },
+  "menu": {
+    "chooseExam": "Choose Your Exam",
+    "theory": "Theory Exam",
+    "theoryDesc": "30 multiple-choice questions · 20 minutes · Need 27/30 to pass",
+    "practical": "Practical Exam",
+    "practicalDesc": "Closed course maneuvers · Parking, serpentine, hill start",
+    "city": "City Driving",
+    "cityDesc": "Drive through a real Georgian city · Obey all traffic rules"
+  },
+  "citySelect": {
+    "title": "Select a City",
+    "subtitle": "Choose a city for your exam",
+    "difficulty": "Difficulty",
+    "easy": "Easy",
+    "medium": "Medium",
+    "hard": "Hard",
+    "veryHard": "Very Hard",
+    "startExam": "Start Exam",
+    "back": "Back"
+  },
+  "cities": {
+    "rustavi": {
+      "name": "Rustavi",
+      "desc": "Soviet-era grid streets with wide avenues and industrial zones."
+    },
+    "telavi": {
+      "name": "Telavi",
+      "desc": "Historic wine-country town with fortress walls and vineyard landscapes."
+    },
+    "kutaisi": {
+      "name": "Kutaisi",
+      "desc": "Second largest city — complex intersections and Rioni River crossings."
+    },
+    "batumi": {
+      "name": "Batumi",
+      "desc": "Coastal city with a famous boulevard, palm trees, and heavy tourist traffic."
+    },
+    "akhaltsikhe": {
+      "name": "Akhaltsikhe",
+      "desc": "Medieval castle town with narrow old streets and steep inclines."
+    },
+    "zugdidi": {
+      "name": "Zugdidi",
+      "desc": "Green city with Dadiani Palace and a well-structured grid layout."
+    },
+    "gori": {
+      "name": "Gori",
+      "desc": "Wide Soviet-era boulevards and the famous Gori Fortress on the hill."
+    },
+    "poti": {
+      "name": "Poti",
+      "desc": "Port city with cranes, cargo ships, and coastal weather effects."
+    },
+    "ozurgeti": {
+      "name": "Ozurgeti",
+      "desc": "Peaceful Gurian town with a clean grid layout — perfect for learners."
+    },
+    "sachkhere": {
+      "name": "Sachkhere",
+      "desc": "Mountain town with winding roads and dramatic gorge scenery."
+    },
+    "ambrolauri": {
+      "name": "Ambrolauri",
+      "desc": "Scenic Racha region capital surrounded by vineyards and Caucasus peaks."
+    },
+    "akhalkalaki": {
+      "name": "Akhalkalaki",
+      "desc": "Highland border city on the Javakheti plateau with unique architecture."
+    }
+  },
+  "theory": {
+    "title": "Theory Exam",
+    "question": "Question",
+    "of": "of",
+    "timeRemaining": "Time Remaining",
+    "skip": "Skip",
+    "confirm": "Confirm Answer",
+    "flagged": "Flagged",
+    "flag": "Flag",
+    "submit": "Submit Exam",
+    "unanswered": "Unanswered",
+    "answered": "Answered",
+    "categories": {
+      "signs": "Road Signs & Markings",
+      "rules": "Traffic Rules & Priority",
+      "safety": "Safe Driving",
+      "vehicle": "Vehicle Knowledge",
+      "firstAid": "First Aid & Emergencies",
+      "ecology": "Environment & Ecology",
+      "legal": "Legal & Administrative"
+    }
+  },
+  "results": {
+    "title": "Exam Results",
+    "score": "Score",
+    "passed": "PASSED",
+    "failed": "FAILED",
+    "timeTaken": "Time Taken",
+    "yourAnswer": "Your answer",
+    "correctAnswer": "Correct answer",
+    "explanation": "Explanation",
+    "tryAgain": "Try Again",
+    "reviewAll": "Review All Questions",
+    "backToMenu": "Back to Menu",
+    "breakdown": "Category Breakdown"
+  },
+  "practical": {
+    "title": "Practical Exam",
+    "task": "Task",
+    "taskComplete": "Task Complete!",
+    "penalty": "Penalty",
+    "violation": "Violation",
+    "examFailed": "Exam Failed",
+    "examPassed": "Exam Passed!",
+    "controls": "Controls",
+    "pause": "Pause",
+    "resume": "Resume"
+  },
+  "city": {
+    "title": "City Driving Exam",
+    "nextInstruction": "Next Instruction",
+    "in": "in",
+    "meters": "m",
+    "speed": "Speed",
+    "limit": "Limit",
+    "gear": "Gear",
+    "score": "Score",
+    "violation": "Violation!",
+    "routeComplete": "Route Complete!"
+  },
+  "auth": {
+    "loginTitle": "Welcome Back",
+    "registerTitle": "Create Account",
+    "email": "Email",
+    "password": "Password",
+    "name": "Full Name",
+    "loginGoogle": "Continue with Google",
+    "loginFacebook": "Continue with Facebook",
+    "loginEmail": "Login with Email",
+    "registerEmail": "Create Account",
+    "noAccount": "Don't have an account?",
+    "haveAccount": "Already have an account?",
+    "signUp": "Sign Up",
+    "signIn": "Sign In",
+    "continueGuest": "Continue as Guest",
+    "forgotPassword": "Forgot Password?"
+  },
+  "profile": {
+    "title": "My Profile",
+    "examsCompleted": "Exams Completed",
+    "passRate": "Pass Rate",
+    "totalTime": "Total Time Played",
+    "history": "Exam History",
+    "weakAreas": "Areas to Improve",
+    "achievements": "Achievements",
+    "date": "Date",
+    "type": "Type",
+    "city": "City",
+    "score": "Score",
+    "status": "Status"
+  },
+  "common": {
+    "loading": "Loading",
+    "start": "Start",
+    "back": "Back",
+    "next": "Next",
+    "close": "Close",
+    "save": "Save",
+    "cancel": "Cancel",
+    "minutes": "minutes",
+    "seconds": "seconds",
+    "points": "points",
+    "tip": "Tip"
+  },
+  "tips": [
+    "At a roundabout, vehicles already inside have priority.",
+    "Always signal before turning or changing lanes.",
+    "The minimum following distance at 60 km/h is 30 meters.",
+    "You must stop completely at a STOP sign, even if the road is clear.",
+    "Pedestrians always have priority at zebra crossings.",
+    "Speed limit in residential areas is 20 km/h unless signed otherwise.",
+    "Headlights must be on at all times when driving outside city limits.",
+    "A solid white line must never be crossed.",
+    "Emergency vehicles with sirens active always have right of way."
+  ]
+}

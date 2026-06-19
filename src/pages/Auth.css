@@ -1,0 +1,142 @@
+/* Auth.css */
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.auth-bg {
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 30% 50%, rgba(230,51,41,0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 50%, rgba(46,134,222,0.06) 0%, transparent 50%),
+    var(--grad-hero);
+  z-index: 0;
+}
+
+.auth-back {
+  position: fixed;
+  top: 1.25rem;
+  left: 1.5rem;
+  z-index: 10;
+}
+
+.auth-card {
+  position: relative;
+  z-index: 10;
+  background: var(--grad-card);
+  border: 1px solid var(--color-border-light);
+  border-radius: 24px;
+  padding: 2.5rem 2rem;
+  width: 100%;
+  max-width: 420px;
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  box-shadow: 0 32px 80px rgba(0,0,0,0.5);
+}
+
+.auth-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  flex-direction: column;
+}
+
+.auth-flag { font-size: 2.5rem; }
+
+.auth-tabs {
+  display: flex;
+  background: rgba(100,150,220,0.08);
+  border-radius: 10px;
+  padding: 0.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.auth-tab {
+  flex: 1;
+  padding: 0.6rem;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.auth-tab.active {
+  background: rgba(255,255,255,0.08);
+  color: var(--color-text-primary);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.auth-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #F0F4FF;
+  margin-bottom: 1.25rem;
+  text-align: center;
+}
+
+.social-btns {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.social-btn {
+  justify-content: center;
+  gap: 0.75rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.auth-divider {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 1.25rem 0;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.form-label {
+  font-weight: 600;
+}
+
+.auth-error {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  background: rgba(230,51,41,0.1);
+  border: 1px solid rgba(230,51,41,0.3);
+  border-radius: 8px;
+  font-size: 0.85rem;
+  color: #FF6B6B;
+}
+
+.auth-switch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
