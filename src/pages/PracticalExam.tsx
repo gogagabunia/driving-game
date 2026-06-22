@@ -33,7 +33,7 @@ import {
 } from '@babylonjs/core';
 import '@babylonjs/loaders/glTF';
 import { SkyMaterial } from '@babylonjs/materials';
-import '@babylonjs/inspector';
+// Inspector loaded dynamically on Shift+I (dev only)
 
 import './PracticalExam.css';
 
@@ -1665,7 +1665,9 @@ const PracticalExam: React.FC = () => {
           if (scene.debugLayer.isVisible()) {
             scene.debugLayer.hide();
           } else {
-            scene.debugLayer.show({ overlay: true, handleCamera: true } as any);
+            import('@babylonjs/inspector').then(() => {
+              scene.debugLayer.show({ overlay: true, handleCamera: true } as any);
+            });
           }
         }
         return;
