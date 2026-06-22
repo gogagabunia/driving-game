@@ -1710,41 +1710,42 @@ const CityExam: React.FC = () => {
       if (examStateRef.current !== 'driving') return;
 
       const key = e.key.toLowerCase();
+      const code = e.code;
       
       // Console log for debugging driving keys
       if (['w', 's', 'a', 'd', ' ', '1', '2', '3', 'h', 'arrowup', 'arrowdown', 'arrowleft', 'arrowright'].includes(key) ||
-          ['Digit1', 'Digit2', 'Digit3', 'Numpad1', 'Numpad2', 'Numpad3'].includes(e.code)) {
+          ['KeyW', 'KeyS', 'KeyA', 'KeyD', 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'Space', 'Digit1', 'Digit2', 'Digit3', 'Numpad1', 'Numpad2', 'Numpad3', 'KeyH', 'KeyC', 'Escape'].includes(code)) {
         console.log("Driving key down:", e.key, "code:", e.code, "handbrake:", inputsRef.current.handbrake);
       }
 
-      if (key === 'w' || e.key === 'ArrowUp') inputsRef.current.accelerate = true;
-      if (key === 's' || e.key === 'ArrowDown') inputsRef.current.reverse = true;
-      if (key === 'a' || e.key === 'ArrowLeft') inputsRef.current.steerLeft = true;
-      if (key === 'd' || e.key === 'ArrowRight') inputsRef.current.steerRight = true;
+      if (key === 'w' || code === 'ArrowUp' || code === 'KeyW' || e.key === 'ArrowUp') inputsRef.current.accelerate = true;
+      if (key === 's' || code === 'ArrowDown' || code === 'KeyS' || e.key === 'ArrowDown') inputsRef.current.reverse = true;
+      if (key === 'a' || code === 'ArrowLeft' || code === 'KeyA' || e.key === 'ArrowLeft') inputsRef.current.steerLeft = true;
+      if (key === 'd' || code === 'ArrowRight' || code === 'KeyD' || e.key === 'ArrowRight') inputsRef.current.steerRight = true;
       
-      if (e.key === ' ') {
+      if (e.key === ' ' || code === 'Space') {
         inputsRef.current.handbrake = !inputsRef.current.handbrake;
         e.preventDefault();
       }
 
       // Gear box toggle: '1' -> D, '2' -> N, '3' -> R (layout-independent)
-      if (key === '1' || e.code === 'Digit1' || e.code === 'Numpad1') {
+      if (key === '1' || code === 'Digit1' || code === 'Numpad1') {
         soundRef.current?.playTick();
         if (carPhysicsRef.current) carPhysicsRef.current.gear = 'D';
       }
-      if (key === '2' || e.code === 'Digit2' || e.code === 'Numpad2') {
+      if (key === '2' || code === 'Digit2' || code === 'Numpad2') {
         soundRef.current?.playTick();
         if (carPhysicsRef.current) carPhysicsRef.current.gear = 'N';
       }
-      if (key === '3' || e.code === 'Digit3' || e.code === 'Numpad3') {
+      if (key === '3' || code === 'Digit3' || code === 'Numpad3') {
         soundRef.current?.playTick();
         if (carPhysicsRef.current) carPhysicsRef.current.gear = 'R';
       }
 
-      if (key === 'h') soundRef.current?.setHorn(true);
+      if (key === 'h' || code === 'KeyH') soundRef.current?.setHorn(true);
 
       // Camera view cycle (C)
-      if (key === 'c') {
+      if (key === 'c' || code === 'KeyC') {
         const nextMode = (cameraModeRef.current === 1 ? 2 : (cameraModeRef.current === 2 ? 3 : 1)) as 1 | 2 | 3;
         cameraModeRef.current = nextMode;
         triggerCameraHUD(nextMode);
@@ -1761,27 +1762,28 @@ const CityExam: React.FC = () => {
         }
       }
 
-      if (e.key === 'Escape') {
+      if (e.key === 'Escape' || code === 'Escape') {
         handlePauseToggle();
       }
     };
 
     const handleKeyUp = (e: KeyboardEvent) => {
       const key = e.key.toLowerCase();
-      if (key === 'w' || e.key === 'ArrowUp') inputsRef.current.accelerate = false;
-      if (key === 's' || e.key === 'ArrowDown') inputsRef.current.reverse = false;
-      if (key === 'a' || e.key === 'ArrowLeft') inputsRef.current.steerLeft = false;
-      if (key === 'd' || e.key === 'ArrowRight') inputsRef.current.steerRight = false;
+      const code = e.code;
+      if (key === 'w' || code === 'ArrowUp' || code === 'KeyW' || e.key === 'ArrowUp') inputsRef.current.accelerate = false;
+      if (key === 's' || code === 'ArrowDown' || code === 'KeyS' || e.key === 'ArrowDown') inputsRef.current.reverse = false;
+      if (key === 'a' || code === 'ArrowLeft' || code === 'KeyA' || e.key === 'ArrowLeft') inputsRef.current.steerLeft = false;
+      if (key === 'd' || code === 'ArrowRight' || code === 'KeyD' || e.key === 'ArrowRight') inputsRef.current.steerRight = false;
       
-      if (key === 'h') soundRef.current?.setHorn(false);
+      if (key === 'h' || code === 'KeyH') soundRef.current?.setHorn(false);
     };
 
-    window.addEventListener('keydown', handleKeyDown);
-    window.addEventListener('keyup', handleKeyUp);
+    document.addEventListener('keydown', handleKeyDown, true);
+    document.addEventListener('keyup', handleKeyUp, true);
 
     return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-      window.removeEventListener('keyup', handleKeyUp);
+      document.removeEventListener('keydown', handleKeyDown, true);
+      document.removeEventListener('keyup', handleKeyUp, true);
     };
   }, []);
 
