@@ -45,11 +45,34 @@ self.addEventListener('fetch', (event) => {
 
   // Handle caching for same-origin resources
   if (url.origin === self.location.origin) {
+    // 1. Special handling for navigation requests (HTML pages)
+    if (event.request.mode === 'navigate') {
+      event.respondWith(
+        fetch(event.request)
+          .then((networkResponse) => {
+            // If the network response is OK, use it
+            if (networkResponse && networkResponse.status === 200) {
+              return networkResponse;
+            }
+            // If network response was not OK (e.g., 404), fallback to cached index.html
+            return caches.match('/index.html').then((cachedResponse) => {
+              return cachedResponse || networkResponse;
+            });
+          })
+          .catch(() => {
+            // If network fetch fails (offline), fallback to cached index.html
+            return caches.match('/index.html');
+          })
+      );
+      return;
+    }
+
+    // 2. Handling for other same-origin requests (assets, images, etc.)
     event.respondWith(
       caches.match(event.request).then((cachedResponse) => {
         if (cachedResponse) {
-          // Stale-While-Revalidate for critical metadata and root index
-          if (url.pathname === '/' || url.pathname === '/index.html' || url.pathname === '/manifest.json') {
+          // Stale-While-Revalidate for critical metadata like manifest.json
+          if (url.pathname === '/manifest.json') {
             fetch(event.request)
               .then((networkResponse) => {
                 if (networkResponse.status === 200) {
@@ -76,11 +99,10 @@ self.addEventListener('fetch', (event) => {
 
             return networkResponse;
           })
-          .catch(() => {
-            // Offline fallback for navigation requests
-            if (event.request.mode === 'navigate') {
-              return caches.match('/index.html');
-            }
+          .catch((error) => {
+            // Rethrow the error so it fails naturally as a network error,
+            // avoiding 'TypeError: Failed to convert value to Response'.
+            throw error;
           });
       })
     );
