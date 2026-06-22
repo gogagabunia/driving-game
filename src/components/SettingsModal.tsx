@@ -32,7 +32,7 @@ const DEFAULT_SUSPENSION: SuspensionSettings = {
   rollStiffness: 150,
   rollDamping: 16,
   squatDiveFactor: 0.001,
-  bodyRollFactor: 0.018,
+  bodyRollFactor: 0.0,
   fwdGripLimit: 0.85,
   fwdUndersteer: 0.70,
   fwdWeightTransfer: 0.10,

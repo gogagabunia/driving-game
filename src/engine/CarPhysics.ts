@@ -70,7 +70,7 @@ export class CarPhysics {
 
   // Dynamic suspension scaling factors
   private squatDiveFactor = 0.001;
-  private bodyRollFactor = 0.018; // enabled for visible cornering body roll
+  private bodyRollFactor = 0.0; // disabled body roll by default
 
   // Track previous speed for acceleration-induced pitch
   private lastSpeed: number = 0;
